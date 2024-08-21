@@ -9,8 +9,14 @@ import psychlua.CustomSubstate;
 import psychlua.FunkinLua;
 #end
 
+
 #if HSCRIPT_ALLOWED
 import tea.SScript;
+
+#if (SScript <= version("8.1.6"))
+typedef Tea = TeaCall;
+#end
+
 class HScript extends SScript
 {
 	public var modFolder:String;
