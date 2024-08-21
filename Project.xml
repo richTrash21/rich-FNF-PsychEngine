@@ -178,8 +178,10 @@
 
 	<!-- Disable DCE and include all flixel classes in the runtime -->
 	<!-- From official Funkin' repo (https://github.com/FunkinCrew/Funkin/blob/main/Project.xml) -->
-	<haxeflag name="-dce no" if="HSCRIPT_ALLOWED"/>
-	<haxeflag name="--macro" value="include('flixel', true, [ 'flixel.addons.editors.spine.*', 'flixel.addons.nape.*', 'flixel.system.macros.*' ])" />
+	<section if="HSCRIPT_ALLOWED">
+		<haxeflag name="-dce no" if="HSCRIPT_ALLOWED"/>
+		<haxeflag name="--macro" value="include('flixel', true, ['flixel.addons.editors.spine.*', 'flixel.addons.nape.*', 'flixel.system.macros.*'])"/>
+	</section>
 
 	<assets path='art/iconOG.png' rename='icon.png' if="linux" />
 	
