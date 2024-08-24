@@ -525,25 +525,31 @@ class Character extends FlxSprite
 
 	public function copyAtlasValues()
 	{
-		@:privateAccess
-		{
-			atlas.cameras = cameras;
-			atlas.scrollFactor = scrollFactor;
-			atlas.scale = scale;
-			atlas.offset = offset;
-			atlas.origin = origin;
-			atlas.x = x;
-			atlas.y = y;
-			atlas.angle = angle;
-			atlas.alpha = alpha;
-			atlas.visible = visible;
-			atlas.flipX = flipX;
-			atlas.flipY = flipY;
-			atlas.shader = shader;
-			atlas.antialiasing = antialiasing;
-			atlas.colorTransform = colorTransform;
-			atlas.color = color;
-		}
+		atlas.cameras = cameras;
+		atlas.scrollFactor.copyFrom(scrollFactor);
+		atlas.scale.copyFrom(scale);
+		atlas.offset.copyFrom(offset);
+		atlas.origin.copyFrom(origin);
+		atlas.x = x;
+		atlas.y = y;
+		atlas.angle = angle;
+		atlas.visible = visible;
+		atlas.flipX = flipX;
+		atlas.flipY = flipY;
+		atlas.shader = shader;
+		atlas.antialiasing = antialiasing;
+		atlas.setColorTransform(
+			colorTransform.redMultiplier,
+			colorTransform.greenMultiplier,
+			colorTransform.blueMultiplier,
+			colorTransform.alphaMultiplier,
+			colorTransform.redMultiplier,
+			colorTransform.greenMultiplier,
+			colorTransform.blueMultiplier,
+			colorTransform.alphaMultiplier
+		);
+		@:bypassAccessor atlas.color = color;
+		@:bypassAccessor atlas.alpha = alpha;
 	}
 
 	public override function destroy()
